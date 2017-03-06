@@ -1,16 +1,13 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import { window, StatusBarItem, StatusBarAlignment } from 'vscode';
+import * as vscode from 'vscode'
 import * as copyPaste from "copy-paste";
 
 var isURL = require('is-url');
 var request = require('request');
 
-var showError = vscode.window.showInformationMessage;
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -18,56 +15,72 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
+    let paster = new Paster();
     let disposable = vscode.commands.registerCommand('extension.pasteURL', () => {
-        Paster.paste()
+        paster.paste()
     });
 
     context.subscriptions.push(disposable);
 }
 
 class Paster {
-    public static paste() {
+    private _statusBarItem: vscode.StatusBarItem;
+
+    public paste() {
+        if (!this._statusBarItem) {
+            this._statusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
+        }
+
         copyPaste.paste((error, content) => {
             if (content && isURL(content)) {
-                vscode.window.showInformationMessage('Geting title from URL!');
-                generateMarkDownStyleLink(content)
+                this.showMessage('Getting title from URL...')
             } else {
-                showError('Not a URL!');
+                this.showMessage('Not a URL.')
             }
         })
     }
-}
 
-function generateMarkDownStyleLink(url) {
-    function requestResponseHandler(error, response, body) {
-        var title;
-
-        if (!error && response.statusCode === 200) {
-            var re =  /<title.*?>\s*(.*?)\s*<\/title/g;
-            var match = re.exec(body)
-            title = match[1]
-            if (match.length > 1) {
-                var result = '[' + title + ']' + '(' + url + ')'
-                writeToEditor(result)
+    generateMarkDownStyleLink(url) {
+        var _this = this;
+        function requestResponseHandler(error, response, body) {
+            var title;
+            if (!error && response.statusCode === 200) {
+                console.log(1)
+                var re = /<title.*?>\s*(.*?)\s*<\/title/g;
+                var match = re.exec(body)
+                title = match[1]
+                if (match.length > 1) {
+                    var result = '[' + title + ']' + '(' + url + ')'
+                    _this.writeToEditor(result)
+                } else {
+                    this.showMessage("Can't find title...")
+                }
             } else {
-                showError('Sorry, title not found!')
+                this.showMessage(error)
             }
-        } else {
-            showError('Not a URL');
         }
-     }
 
-    request(url, requestResponseHandler);
+        request(url, requestResponseHandler);
+    }
+
+    writeToEditor(content) {
+        vscode.window.activeTextEditor.edit((editBuilder) => {
+            let startLine = vscode.window.activeTextEditor.selection.start.line;
+            let lastCharIndex = vscode.window.activeTextEditor.document.lineAt(startLine).text.length;
+            let position = new vscode.Position(startLine, lastCharIndex);
+            editBuilder.insert(position, content);
+        });
+    }
+
+    showMessage(content) {
+        this._statusBarItem.text = "Paste URL: " + content 
+        this._statusBarItem.show()
+        setTimeout(() => {
+            this._statusBarItem.hide()
+        },3000);
+    }
 }
 
-function writeToEditor(content) {
-    vscode.window.activeTextEditor.edit((editBuilder) => {
-        let startLine = vscode.window.activeTextEditor.selection.start.line;
-        let lastCharIndex = vscode.window.activeTextEditor.document.lineAt(startLine).text.length;
-        let position = new vscode.Position(startLine, lastCharIndex);
-        editBuilder.insert(position, content);
-    });
-}
 
 // this method is called when your extension is deactivated
 export function deactivate() {
