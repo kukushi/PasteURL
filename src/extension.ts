@@ -2,8 +2,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import { window, StatusBarItem, StatusBarAlignment } from 'vscode';
-import * as vscode from 'vscode'
-import * as copyPaste from "copy-paste";
+import * as vscode from 'vscode';
+import * as copyPaste from 'copy-paste';
+import * as getTitle from 'get-title';
+import * as hyperquest from 'hyperquest';
 
 var isURL = require('is-url');
 var request = require('request');
@@ -43,24 +45,11 @@ class Paster {
 
     generateMarkDownStyleLink(url) {
         var _this = this;
-        function requestResponseHandler(error, response, body) {
-            var title;
-            if (!error && response.statusCode === 200) {
-                var re = /<title.*?>\s*(.*?)\s*<\/title/g;
-                var match = re.exec(body)
-                title = match[1]
-                if (match.length > 1) {
-                    var result = '[' + title + ']' + '(' + url + ')'
-                    _this.writeToEditor(result)
-                } else {
-                    _this.showMessage("Can't find title...")
-               }
-            } else {
-                _this.showMessage(error)
-            }
-        }
-
-        request(url, requestResponseHandler);
+        const stream = hyperquest(url)
+        getTitle(stream).then(title => {
+            var result = '[' + title + ']' + '(' + url + ')'
+            this.writeToEditor(result)
+        })
     }
 
     writeToEditor(content) {
