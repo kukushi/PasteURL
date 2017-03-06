@@ -33,6 +33,7 @@ class Paster {
 
         copyPaste.paste((error, content) => {
             if (content && isURL(content)) {
+                this.generateMarkDownStyleLink(content)
                 this.showMessage('Getting title from URL...')
             } else {
                 this.showMessage('Not a URL.')
@@ -45,7 +46,6 @@ class Paster {
         function requestResponseHandler(error, response, body) {
             var title;
             if (!error && response.statusCode === 200) {
-                console.log(1)
                 var re = /<title.*?>\s*(.*?)\s*<\/title/g;
                 var match = re.exec(body)
                 title = match[1]
@@ -53,10 +53,10 @@ class Paster {
                     var result = '[' + title + ']' + '(' + url + ')'
                     _this.writeToEditor(result)
                 } else {
-                    this.showMessage("Can't find title...")
-                }
+                    _this.showMessage("Can't find title...")
+               }
             } else {
-                this.showMessage(error)
+                _this.showMessage(error)
             }
         }
 
