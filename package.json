@@ -1,11 +1,19 @@
 {
     "name": "pasteurl",
-    "displayName": "PasteURL",
+    "displayName": "Markdown PasteURL",
     "description": "Paste URL in markdown",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "kukushi",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kukushi/PasteURL.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kukushi/PasteURL/issues"
+    },
+    "homepage": "https://github.com/kukushi/PasteURL/blob/master/README.md",
     "engines": {
-        "vscode": "^1.10.0"
+        "vscode": "^1.8.0"
     },
     "categories": [
         "Other"
