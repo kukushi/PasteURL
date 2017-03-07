@@ -7,9 +7,6 @@ import * as copyPaste from 'copy-paste';
 import * as getTitle from 'get-title';
 import * as hyperquest from 'hyperquest';
 
-var isURL = require('is-url');
-var request = require('request');
-
 export function activate(context: vscode.ExtensionContext) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -70,6 +67,15 @@ class Paster {
     }
 }
 
+function isURL(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return pattern.test(str);
+}
 
 // this method is called when your extension is deactivated
 export function deactivate() {
