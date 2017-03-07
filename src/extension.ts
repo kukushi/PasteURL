@@ -1,6 +1,5 @@
 'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+
 import { window, StatusBarItem, StatusBarAlignment } from 'vscode';
 import * as vscode from 'vscode';
 import * as copyPaste from 'copy-paste';
@@ -9,11 +8,6 @@ import * as hyperquest from 'hyperquest';
 
 export function activate(context: vscode.ExtensionContext) {
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
     let paster = new Paster();
     let disposable = vscode.commands.registerCommand('extension.pasteURL', () => {
         paster.paste()
