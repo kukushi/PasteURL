@@ -36,7 +36,10 @@ class Paster {
 
     generateMarkDownStyleLink(url) {
         var _this = this
-        const stream = hyperquest(url, function(err, response) {
+        var headers = {
+            "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
+        }
+        const stream = hyperquest(url, {headers: headers}, function(err, response) {
             if (err) {
                 _this.showMessage('Error happened when fetching title')
             }
