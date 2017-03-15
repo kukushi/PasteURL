@@ -25,7 +25,7 @@ class Paster {
         }
 
         copyPaste.paste((error, content) => {
-            if (content && isURL(content)) {
+            if (content) {
                 this.generateMarkDownStyleLink(content)
                 this.showMessage('Getting title from URL...')
             } else {
@@ -35,12 +35,16 @@ class Paster {
     }
 
     generateMarkDownStyleLink(url) {
-        var _this = this;
         const stream = hyperquest(url)
-        getTitle(stream).then(title => {
-            var result = '[' + title + ']' + '(' + url + ')'
-            this.writeToEditor(result)
-        })
+        try {
+            getTitle(stream).then(title => {
+               var result = '[' + title + ']' + '(' + url + ')'
+               this.writeToEditor(result)
+            })
+        }
+        catch (e) {
+            this.showMessage('Error')
+        }
     }
 
     writeToEditor(content) {
@@ -59,16 +63,6 @@ class Paster {
             this._statusBarItem.hide()
         },3000);
     }
-}
-
-function isURL(str) {
-  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
-  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  return pattern.test(str);
 }
 
 // this method is called when your extension is deactivated
