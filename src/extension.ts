@@ -35,16 +35,17 @@ class Paster {
     }
 
     generateMarkDownStyleLink(url) {
-        const stream = hyperquest(url)
-        try {
-            getTitle(stream).then(title => {
-               var result = '[' + title + ']' + '(' + url + ')'
-               this.writeToEditor(result)
-            })
-        }
-        catch (e) {
-            this.showMessage('Error')
-        }
+        var _this = this
+        const stream = hyperquest(url, function(err, response) {
+            if (err) {
+                _this.showMessage('Error happened when fetching title')
+            }
+        })
+
+        getTitle(stream).then(title => {
+           var result = '[' + title + ']' + '(' + url + ')'
+           this.writeToEditor(result)
+        })
     }
 
     writeToEditor(content) {
