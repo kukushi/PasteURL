@@ -20,11 +20,13 @@ One gif is worth a thousand words.
 
 ## Usage
 
-Hit `"Command+Shift+P"` and type `Paste URL` and hit enter.
+Hit `"Command+Shift+P"` and then type `Paste URL` and hit enter.
+You can checking the status in the status bar in the bottom of VSCode window.
 
 ## Known Issues
 
 - Some special characters may not processed correctly.
+- Fetching title from some URLs may take longer than expected.
 
 ## Source
 
