@@ -37,17 +37,21 @@ class Paster {
     generateMarkDownStyleLink(url) {
         var _this = this
         var headers = {
-            "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
         }
-        const stream = hyperquest(url, {headers: headers}, function(err, response) {
+        if (!url.startsWith("http")) {
+            url = "http://" + url
+        }
+        const stream = hyperquest(url, { headers: headers }, function (err, response) {
             if (err) {
                 _this.showMessage('Error happened when fetching title')
             }
         })
 
         getTitle(stream).then(title => {
-           var result = '[' + title + ']' + '(' + url + ')'
-           this.writeToEditor(result)
+            title = this.processTitle(title, url)
+            var result = '[' + title + ']' + '(' + url + ')'
+            this.writeToEditor(result)
         })
     }
 
@@ -60,12 +64,18 @@ class Paster {
         });
     }
 
+    processTitle(title, url) {
+        if (title == undefined) {
+            return url
+        }
+    }
+
     showMessage(content) {
-        this._statusBarItem.text = "Paste URL: " + content 
+        this._statusBarItem.text = "Paste URL: " + content
         this._statusBarItem.show()
         setTimeout(() => {
             this._statusBarItem.hide()
-        },3000);
+        }, 3000);
     }
 }
 
