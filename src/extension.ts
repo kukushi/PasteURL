@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 }
 
-class Paster {
+export class Paster {
     private _statusBarItem: vscode.StatusBarItem;
 
     public paste() {
