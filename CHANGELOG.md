@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.2.2] - 2017-03-17
+
+### Fixed
+
+- Title now can be fetched successfull
+
 ## [0.2.1] - 2017-03-16
 
 ### Changed

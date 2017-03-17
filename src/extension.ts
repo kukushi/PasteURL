@@ -68,6 +68,7 @@ class Paster {
         if (title == undefined) {
             return url
         }
+        return title
     }
 
     showMessage(content) {
