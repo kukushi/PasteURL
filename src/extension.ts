@@ -69,7 +69,7 @@ export class Paster {
 
     replaceWith(originalContent, newContent) {
         let document = vscode.window.activeTextEditor.document
-        var range: vscode.Range;
+        var range: Range;
         var line: String;
         for (var i = 0; i < document.lineCount; i++) {
             line = document.lineAt(i).text
@@ -86,9 +86,8 @@ export class Paster {
 
         var start = new Position(range.start.line, line.indexOf(originalContent));
         var end = new Position(range.start.line, range.start.character + originalContent.length);
-
         var newRange = new Range(start, end);
-        var text = document.getText(newRange);
+
         vscode.window.activeTextEditor.edit((editBuilder) => {
             editBuilder.replace(newRange, newContent);
         })
