@@ -42,7 +42,9 @@ export class Paster {
             url = "http://" + url
         }
 
-        var fetchingTitle = 'Fetching Title...'
+        var date = new Date()
+        var timestamp = date.getMinutes() + ':' + date.getSeconds()
+        var fetchingTitle = 'Fetching Title in ' + timestamp + '...'
         _this.writeToEditor('[' + fetchingTitle + '](' + url + ')').then(function (result) {
             // Editing is done async, so we need to make sure previous editing is finished
             const stream = hyperquest(url, { headers: headers }, function (err, response) {
