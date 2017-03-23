@@ -27,7 +27,6 @@ export class Paster {
         copyPaste.paste((error, content) => {
             if (content) {
                 this.generateMarkDownStyleLink(content)
-                this.showMessage('Getting title from URL...')
             } else {
                 this.showMessage('Not a URL.')
             }
@@ -39,32 +38,32 @@ export class Paster {
         var headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
         }
-        if (!url.startsWith("http:")) {
+        if (!url.startsWith("http")) {
             url = "http://" + url
         }
 
         var fetchingTitle = 'Fetching Title...'
-        _this.writeToEditor('[' + fetchingTitle + '](' + url + ')')
+        _this.writeToEditor('[' + fetchingTitle + '](' + url + ')').then(function (result) {
+            // Editing is done async, so we need to make sure previous editing is finished
+            const stream = hyperquest(url, { headers: headers }, function (err, response) {
+                if (err) {
+                    _this.replaceWith(fetchingTitle, 'Error Happened')
+                }
+            })
 
-        const stream = hyperquest(url, { headers: headers }, function (err, response) {
-            if (err) {
-                _this.replaceWith(fetchingTitle, 'Error Happened')
-            }
-        })
-
-        getTitle(stream).then(title => {
-            title = _this.processTitle(title, url)
-            _this.replaceWith(fetchingTitle, title)
-        })
+            getTitle(stream).then(title => {
+                title = _this.processTitle(title, url)
+                _this.replaceWith(fetchingTitle, title)
+            })
+        });
     }
 
-    writeToEditor(content) {
-        vscode.window.activeTextEditor.edit((editBuilder) => {
-            let startLine = vscode.window.activeTextEditor.selection.start.line;
-            let lastCharIndex = vscode.window.activeTextEditor.document.lineAt(startLine).text.length;
-            let position = new vscode.Position(startLine, lastCharIndex);
+    writeToEditor(content): Thenable<boolean> {
+        let startLine = vscode.window.activeTextEditor.selection.start.line;
+        let lastCharIndex = vscode.window.activeTextEditor.document.lineAt(startLine).text.length;
+        let position = new vscode.Position(startLine, lastCharIndex);
+        return vscode.window.activeTextEditor.edit((editBuilder) => {
             editBuilder.insert(position, content);
-            vscode.window.activeTextEditor.document.save()
         });
     }
 
@@ -92,9 +91,7 @@ export class Paster {
         var text = document.getText(newRange);
         vscode.window.activeTextEditor.edit((editBuilder) => {
             editBuilder.replace(newRange, newContent);
-        }).then(function (a) {
-            console.log(a)
-        });
+        })
     }
 
     processTitle(title, url) {
