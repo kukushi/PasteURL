@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2017-03-23
+
+### Changed
+
+- Introduce branch new interaction
+
 ## [0.2.2] - 2017-03-17
 
 ### Fixed
