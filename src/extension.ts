@@ -34,6 +34,25 @@ export class Paster {
     }
 
     generateMarkDownStyleLink(url) {
+        var selection = vscode.window.activeTextEditor.selection
+        var isSelectionEmpty = selection.start == selection.end
+
+        if (isSelectionEmpty) {
+            this.composeTitleAndSelection(url)
+        } else {
+            this.replaceSelectionWithTitleURL(selection, url)
+        }
+    }
+
+    replaceSelectionWithTitleURL(selection, url) {
+        var text = vscode.window.activeTextEditor.document.getText(selection)
+        var markdownLink = '[' + text + ']' + '(' + url + ')'
+        vscode.window.activeTextEditor.edit((editBuilder) => {
+            editBuilder.replace(selection, markdownLink);
+        }) 
+    }
+
+    composeTitleAndSelection(url) {
         var _this = this
         var headers = {
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
