@@ -21,7 +21,8 @@ One gif is worth a thousand words.
 ## Usage
 
 Hit `"Command+Shift+P"` and then type `Paste URL` and hit enter.
-You can checking the status in the status bar in the bottom of VSCode window.
+
+Selection will be used as title if possible.
 
 ## Known Issues
 

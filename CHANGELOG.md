@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [0.3.1] - 2017-03-25
+
+### Changed
+
+- Selection will be used as title if allowed.
+
+### Fixed
+
+- Text replacement is fixed.
+
 ## [0.3.0] - 2017-03-23
 
 ### Changed
