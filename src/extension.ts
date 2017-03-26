@@ -34,8 +34,10 @@ export class Paster {
     }
 
     generateMarkDownStyleLink(url) {
+        var document = vscode.window.activeTextEditor.document
         var selection = vscode.window.activeTextEditor.selection
-        var isSelectionEmpty = selection.start == selection.end
+        var selectedText = document.getText(selection)
+        var isSelectionEmpty = selectedText.length == 0 // || selectedText == ' '
 
         if (isSelectionEmpty) {
             this.composeTitleAndSelection(url)
