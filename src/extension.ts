@@ -110,9 +110,8 @@ export class Paster {
         }
 
         var start = new Position(range.start.line, line.indexOf(originalContent));
-        var end = new Position(range.start.line, range.start.character + originalContent.length + 1);
+        var end = new Position(range.start.line, start.character + originalContent.length);
         var newRange = new Range(start, end);
-
         vscode.window.activeTextEditor.edit((editBuilder) => {
             editBuilder.replace(newRange, newContent);
         })
