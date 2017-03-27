@@ -6,7 +6,7 @@
 
 ### Fixed
 
-- Replacement shoud done right.
+- Replacement should done right.
 
 ## [0.3.1] - 2017-03-25
 
@@ -28,7 +28,7 @@
 
 ### Fixed
 
-- Title now can be fetched successfull
+- Title now can be fetched successfully
 
 ## [0.2.1] - 2017-03-16
 
