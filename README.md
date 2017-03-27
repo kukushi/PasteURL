@@ -10,7 +10,7 @@ For example, you have the below URL in your clipboard:
 
     https://code.visualstudio.com
 
-When pasting wtih `Paste URL`, you will get
+When pasting with `Paste URL`, you will get
 
     [Visual Studio Code - Code Editing. Redefined](https://code.visualstudio.com)
 
