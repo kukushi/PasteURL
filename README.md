@@ -20,13 +20,21 @@ One gif is worth a thousand words.
 
 ## Usage
 
-Hit `"Command+Shift+P"` and then type `Paste URL` and hit enter.
+- Hit `"Control + Alt + P"` (Recommended)
+- Hit `"Command + Shift + P"` and then type `Paste URL` and hit enter.
 
 Selection will be used as title if possible.
 
+You can change the default shortcut to whatever you like by editing the `Code > Preferences > Keyboard Shortcuts`    (`File > Preferences > Keyboard Shortcuts` on Windows):
+
+```json
+[
+    {"key": "ctrl+alt+p", "command": "extension.pasteURL"}
+]
+```
+
 ## Known Issues
 
-- Some special characters may not processed correctly.
 - Fetching title from some URLs may take longer than expected.
 
 ## Source
