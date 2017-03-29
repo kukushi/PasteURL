@@ -29,6 +29,10 @@
         "commands": [{
             "command": "extension.pasteURL",
             "title": "Paste URL"
+        }],
+        "keybindings": [{
+            "key": "ctrl+alt+p", 
+            "command": "extension.pasteURL"
         }]
     },
     "scripts": {
