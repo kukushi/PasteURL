@@ -1,6 +1,10 @@
 # Change Log
 
-## [Unreleased]
+## [0.3.3] - 2017-03-30
+
+### Added
+
+- Add default shortcut for paste url
 
 ## [0.3.2] - 2017-03-27
 
