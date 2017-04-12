@@ -4,7 +4,7 @@
 
 ## Feature
 
-When pasting, automatically converting url to markdown style link.
+When pasting, automatically converting URL to markdown style link.
 
 For example, you have the below URL in your clipboard:
 
@@ -23,7 +23,7 @@ One gif is worth a thousand words.
 - Hit `"Control + Alt + P"` (Recommended)
 - Hit `"Command + Shift + P"` and then type `Paste URL` and hit enter.
 
-Selection will be used as title if possible.
+Selection will be used as the title if possible.
 
 You can change the default shortcut to whatever you like by editing the `Code > Preferences > Keyboard Shortcuts`    (`File > Preferences > Keyboard Shortcuts` on Windows):
 
