@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.5] - 2017-04-28
+
+### Changed
+
+- The gif is highly optimized. Loading should be much faster. 
+
 ## [0.3.4] - 2017-04-27
 
 ### Fixed
