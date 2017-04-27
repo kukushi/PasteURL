@@ -85,8 +85,8 @@ export class Paster {
 
     writeToEditor(content): Thenable<boolean> {
         let startLine = vscode.window.activeTextEditor.selection.start.line;
-        let lastCharIndex = vscode.window.activeTextEditor.document.lineAt(startLine).text.length;
-        let position = new vscode.Position(startLine, lastCharIndex);
+        var selection = vscode.window.activeTextEditor.selection
+        let position = new vscode.Position(startLine, selection.start.character);
         return vscode.window.activeTextEditor.edit((editBuilder) => {
             editBuilder.insert(position, content);
         });

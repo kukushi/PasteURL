@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.4] - 2017-04-27
+
+### Fixed
+
+- Pasted content now can be inserted into editor in the right place rather than appended in the end. 
+
 ## [0.3.3] - 2017-03-30
 
 ### Added
