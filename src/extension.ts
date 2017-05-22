@@ -67,7 +67,7 @@ export class Paster {
         var seconds = date.getSeconds()
         var padding = seconds < 10 ? '0' : ''
         var timestamp = date.getMinutes() + ':' + padding + seconds
-        var fetchingTitle = 'Fetching Title on ' + timestamp
+        var fetchingTitle = 'Getting Title at ' + timestamp
         _this.writeToEditor('[' + fetchingTitle + '](' + url + ')').then(function (result) {
             // Editing is done async, so we need to make sure previous editing is finished
             const stream = hyperquest(url, { headers: headers }, function (err, response) {

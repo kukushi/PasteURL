@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.3.6] - 2017-05-22
+
+### Changed
+
+- Update placeholder text 
+
 ## [0.3.5] - 2017-04-28
 
 ### Changed
