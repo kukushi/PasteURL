@@ -1,10 +1,14 @@
 # Change Log
 
+## [0.3.7] - 2017-06-16
+
+- Update icon
+
 ## [0.3.6] - 2017-05-22
 
 ### Changed
 
-- Update placeholder text 
+- Update placeholder text
 
 ## [0.3.5] - 2017-04-28
 

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="130px" height="130px" viewBox="0 0 130 130" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
     <title>Artboard</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Artboard">
-            <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="130" height="130"></rect>
-            <text id="[Link]" font-family="AmericanTypewriter, American Typewriter" font-size="36" font-weight="normal" fill="#000000">
-                <tspan x="10" y="74">[Link]</tspan>
+            <rect id="Rectangle" fill="#21252B" x="0" y="0" width="130" height="130"></rect>
+            <text id="[Title]" font-family="AlBayan, Al Bayan" font-size="42" font-weight="normal" fill="#6092E0">
+                <tspan x="4" y="80">[</tspan>
+                <tspan x="20.17" y="80" font-family="LucidaGrande, Lucida Grande">Title</tspan>
+                <tspan x="110.117266" y="80">]</tspan>
             </text>
         </g>
     </g>
