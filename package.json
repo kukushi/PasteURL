@@ -2,7 +2,7 @@
     "name": "pasteurl",
     "displayName": "Markdown PasteURL",
     "description": "Paste URL in markdown",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "publisher": "kukushi",
     "repository": {
         "type": "git",
@@ -26,14 +26,18 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.pasteURL",
-            "title": "Paste URL"
-        }],
-        "keybindings": [{
-            "key": "ctrl+alt+p", 
-            "command": "extension.pasteURL"
-        }]
+        "commands": [
+            {
+                "command": "extension.pasteURL",
+                "title": "Paste URL"
+            }
+        ],
+        "keybindings": [
+            {
+                "key": "ctrl+alt+p",
+                "command": "extension.pasteURL"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
@@ -42,11 +46,11 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.78",
         "mocha": "^2.3.3",
-        "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "typescript": "^2.4.0",
+        "vscode": "^1.0.0"
     },
     "dependencies": {
         "copy-paste": "^1.3.0",

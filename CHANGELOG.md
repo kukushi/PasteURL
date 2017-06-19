@@ -1,6 +1,14 @@
 # Change Log
 
+## [0.3.8] - 2017-06-19
+
+### Changed
+
+- Update Dependency
+
 ## [0.3.7] - 2017-06-16
+
+### Changed
 
 - Update icon
 
