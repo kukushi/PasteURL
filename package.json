@@ -13,7 +13,7 @@
     },
     "author": "kukushi",
     "license": "MIT",
-    "icon": "images/icon.svg",
+    "icon": "images/icon.icon",
     "homepage": "https://github.com/kukushi/PasteURL/blob/master/README.md",
     "engines": {
         "vscode": "^1.16.0"
