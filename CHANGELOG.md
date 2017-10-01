@@ -1,5 +1,13 @@
 # Change Log
 
+## [0.3.9] - 2017-10-02
+
+- Honor http proxy
+
+### Changed
+
+- Update Dependency
+
 ## [0.3.8] - 2017-06-19
 
 ### Changed
