@@ -4,9 +4,14 @@ import { window, StatusBarItem, StatusBarAlignment, Position, Range } from 'vsco
 import * as vscode from 'vscode';
 import * as copyPaste from 'copy-paste';
 import * as getTitle from 'get-title';
-import * as hyperquest from 'hyperquest';
+import * as request from 'request';
+
+var baseRequest;
 
 export function activate(context: vscode.ExtensionContext) {
+
+    configureHttpRequest();
+	vscode.workspace.onDidChangeConfiguration(e => configureHttpRequest());
 
     let paster = new Paster();
     let disposable = vscode.commands.registerCommand('extension.pasteURL', () => {
@@ -51,7 +56,7 @@ export class Paster {
         var markdownLink = '[' + text + ']' + '(' + url + ')'
         vscode.window.activeTextEditor.edit((editBuilder) => {
             editBuilder.replace(selection, markdownLink);
-        }) 
+        })
     }
 
     composeTitleAndSelection(url) {
@@ -70,7 +75,7 @@ export class Paster {
         var fetchingTitle = 'Getting Title at ' + timestamp
         _this.writeToEditor('[' + fetchingTitle + '](' + url + ')').then(function (result) {
             // Editing is done async, so we need to make sure previous editing is finished
-            const stream = hyperquest(url, { headers: headers }, function (err, response) {
+            const stream = baseRequest(url, { headers: headers }, function (err, response) {
                 if (err) {
                     _this.replaceWith(fetchingTitle, 'Error Happened')
                 }
@@ -135,4 +140,9 @@ export class Paster {
 
 // this method is called when your extension is deactivated
 export function deactivate() {
+}
+
+function configureHttpRequest() {
+	let httpSettings = vscode.workspace.getConfiguration('http');
+    baseRequest = request.defaults({'proxy': `${httpSettings.get('proxy')}`});
 }
