@@ -5,6 +5,7 @@ import * as vscode from 'vscode';
 import * as copyPaste from 'copy-paste';
 import * as getTitle from 'get-title';
 import * as request from 'request';
+import * as hyperquest from 'hyperquest';
 
 var baseRequest;
 
@@ -142,7 +143,19 @@ export class Paster {
 export function deactivate() {
 }
 
+function isProxyConfigured() {
+    return vscode.workspace.getConfiguration('http') != undefined;
+}
+
 function configureHttpRequest() {
-	let httpSettings = vscode.workspace.getConfiguration('http');
-    baseRequest = request.defaults({'proxy': `${httpSettings.get('proxy')}`});
+    let httpSettings = vscode.workspace.getConfiguration('http');
+    if (httpSettings != undefined) {
+        let proxy = `${httpSettings.get('proxy')}`
+        if (!proxy.startsWith("http")) {
+            proxy = "http://" + proxy
+        }
+        baseRequest = request.defaults({'proxy': proxy});
+    } else {
+        baseRequest = hyperquest
+    }
 }
