@@ -1,8 +1,12 @@
 # Change Log
 
+## [0.3.10] - 2017-10-07
+
+- Fix proxy recognition issue
+
 ## [0.3.9] - 2017-10-02
 
-- Honor http proxy
+- Honor `http.proxy` in VSCode settings
 
 ### Changed
 

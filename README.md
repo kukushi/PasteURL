@@ -2,7 +2,7 @@
 
 `PasteURL` is a simple extension that generating markdown-style link when pasting URL.
 
-## Feature
+## Features
 
 When pasting, automatically converting URL to markdown style link.
 
