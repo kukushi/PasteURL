@@ -151,11 +151,16 @@ function configureHttpRequest() {
     let httpSettings = vscode.workspace.getConfiguration('http');
     if (httpSettings != undefined) {
         let proxy = `${httpSettings.get('proxy')}`
-        if (!proxy.startsWith("http")) {
-            proxy = "http://" + proxy
+
+        if (proxy != undefined && proxy.length != 0) {
+            if (!proxy.startsWith("http")) {
+                proxy = "http://" + proxy
+            }
+            baseRequest = request.defaults({'proxy': proxy});
         }
-        baseRequest = request.defaults({'proxy': proxy});
-    } else {
+    }
+    
+    if (baseRequest == undefined) {
         baseRequest = hyperquest
     }
 }
