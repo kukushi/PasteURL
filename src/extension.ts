@@ -63,7 +63,7 @@ export class Paster {
     composeTitleAndSelection(url) {
         var _this = this
         var headers = {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Safari/604.1.38"
         }
         if (!url.startsWith("http")) {
             url = "http://" + url
