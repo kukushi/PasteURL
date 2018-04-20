@@ -34,7 +34,7 @@ export class Paster {
             if (content) {
                 this.generateMarkDownStyleLink(content)
             } else {
-                this.showMessage('Not a URL.')
+                this.showMessage('[PasteURL]: Not a URL.')
             }
         })
     }

@@ -4,13 +4,13 @@
 
 ## Features
 
-When pasting, automatically converting URL to markdown style link.
+A markdown inline-style link will be generated when pasting a URL into markdown file.
 
-For example, you have the below URL in your clipboard:
+For example, you copied the below URL:
 
     https://code.visualstudio.com
 
-When pasting with `Paste URL`, you will get
+When pasting with `Paste URL`, you will get:
 
     [Visual Studio Code - Code Editing. Redefined](https://code.visualstudio.com)
 
