@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.3.11] - 2018-04-20
+
+- Tweak description
+
 ## [0.3.10] - 2017-10-07
 
 - Fix proxy recognition issue
