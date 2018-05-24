@@ -1,10 +1,10 @@
 # PasteURL
 
-`PasteURL` is a simple extension that generating markdown-style link when pasting URL.
+`PasteURL` is a simple extension that generating Markdown or reStructuredText style link when pasting URL.
 
 ## Features
 
-A markdown inline-style link will be generated when pasting a URL into markdown file.
+A Markdown or reStructuredText inline-style link will be generated when pasting a URL into the file with corresponding active language.
 
 For example, you copied the below URL:
 
@@ -19,6 +19,8 @@ One gif is worth a thousand words.
 ![feature](images/screenshot.gif)
 
 ## Usage
+
+For Ubuntu Linux make sure that xclip package is installed, see http://github.com/xavi-/node-copy-paste for details.
 
 - Hit `"Control + Alt + P"` (Recommended)
 - Hit `"Command + Shift + P"` and then type `Paste URL` and hit enter.
