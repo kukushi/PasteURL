@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.0] - 2018-05-25
+
+- Add support for reStructuredText file (implemented by [@vvavrychuk](https://github.com/kukushi/PasteURL/pull/4))
+
 ## [0.3.11] - 2018-04-20
 
 - Tweak description
