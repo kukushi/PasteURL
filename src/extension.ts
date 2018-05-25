@@ -55,8 +55,15 @@ export class Paster {
         })
     }
 
+    getLanguage() {
+        if (vscode.window.activeTextEditor.document.fileName.endsWith(".rst"))
+            return 'restructuredtext';
+        
+        return vscode.window.activeTextEditor.document.languageId;
+    }
+
     getLinkFormatter() {
-        if (vscode.window.activeTextEditor.document.languageId == 'restructuredtext')
+        if (this.getLanguage() == 'restructuredtext')
             return new RestructuredTextLinkFormatter();
         else
             return new MarkdownLinkFormatter();
