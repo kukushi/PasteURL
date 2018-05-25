@@ -1,7 +1,7 @@
 {
     "name": "pasteurl",
-    "displayName": "Markdown/reStructuredText PasteURL",
-    "description": "Paste URL in Markdown/reStructuredText",
+    "displayName": "Paste URL",
+    "description": "Paste URL in Markdown/reStructuredText format",
     "version": "0.3.11",
     "publisher": "kukushi",
     "repository": {
@@ -48,16 +48,16 @@
     },
     "devDependencies": {
         "@types/mocha": "^2.2.48",
-        "@types/node": "^7.0.61",
+        "@types/node": "^7.0.65",
         "mocha": "^3.5.0",
         "typescript": "^2.8.3",
-        "vscode": "^1.1.14"
+        "vscode": "^1.1.18"
     },
     "dependencies": {
         "copy-paste": "^1.3.0",
         "get-title": "^1.0.1",
         "hyperquest": "^2.1.3",
-        "npm": "^5.8.0",
-        "request": "^2.85.0"
+        "npm": "^5.10.0",
+        "request": "^2.87.0"
     }
 }

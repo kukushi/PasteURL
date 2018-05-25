@@ -56,17 +56,22 @@ export class Paster {
     }
 
     getLanguage() {
-        if (vscode.window.activeTextEditor.document.fileName.endsWith(".rst"))
-            return 'restructuredtext';
+        var filename = vscode.window.activeTextEditor.document.fileName
+        if (filename.endsWith(".rst") ||
+            filename.endsWith(".rest") ||
+            filename.endsWith(".restx")) {
+            return 'reStructuredText';
+        }
         
         return vscode.window.activeTextEditor.document.languageId;
     }
 
     getLinkFormatter() {
-        if (this.getLanguage() == 'restructuredtext')
+        if (this.getLanguage() == 'reStructuredText') {
             return new RestructuredTextLinkFormatter();
-        else
+        } else {
             return new MarkdownLinkFormatter();
+        }
     }
 
     generateMarkDownStyleLink(url) {
