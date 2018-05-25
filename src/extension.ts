@@ -22,6 +22,22 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 }
 
+interface ILinkFormatter {
+    formatLink(text: string, url: string): string;
+}
+
+class MarkdownLinkFormatter implements ILinkFormatter {
+    formatLink(text: string, url: string): string {
+        return '[' + text + ']' + '(' + url + ')';
+    }
+}
+
+class RestructuredTextLinkFormatter implements ILinkFormatter {
+    formatLink(text: string, url: string): string {
+        return '`' + text + ' <' + url + '>`_';
+    }
+}
+
 export class Paster {
     private _statusBarItem: vscode.StatusBarItem;
 
@@ -39,6 +55,20 @@ export class Paster {
         })
     }
 
+    getLanguage() {
+        if (vscode.window.activeTextEditor.document.fileName.endsWith(".rst"))
+            return 'restructuredtext';
+        
+        return vscode.window.activeTextEditor.document.languageId;
+    }
+
+    getLinkFormatter() {
+        if (this.getLanguage() == 'restructuredtext')
+            return new RestructuredTextLinkFormatter();
+        else
+            return new MarkdownLinkFormatter();
+    }
+
     generateMarkDownStyleLink(url) {
         var document = vscode.window.activeTextEditor.document
         var selection = vscode.window.activeTextEditor.selection
@@ -54,9 +84,9 @@ export class Paster {
 
     replaceSelectionWithTitleURL(selection, url) {
         var text = vscode.window.activeTextEditor.document.getText(selection)
-        var markdownLink = '[' + text + ']' + '(' + url + ')'
+        var formattedLink = this.getLinkFormatter().formatLink(text, url)
         vscode.window.activeTextEditor.edit((editBuilder) => {
-            editBuilder.replace(selection, markdownLink);
+            editBuilder.replace(selection, formattedLink);
         })
     }
 
@@ -74,7 +104,8 @@ export class Paster {
         var padding = seconds < 10 ? '0' : ''
         var timestamp = date.getMinutes() + ':' + padding + seconds
         var fetchingTitle = 'Getting Title at ' + timestamp
-        _this.writeToEditor('[' + fetchingTitle + '](' + url + ')').then(function (result) {
+        var formattedLink = this.getLinkFormatter().formatLink(fetchingTitle, url)
+        _this.writeToEditor(formattedLink).then(function (result) {
             // Editing is done async, so we need to make sure previous editing is finished
             const stream = baseRequest(url, { headers: headers }, function (err, response) {
                 if (err) {

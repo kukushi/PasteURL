@@ -1,7 +1,7 @@
 {
     "name": "pasteurl",
-    "displayName": "Markdown PasteURL",
-    "description": "Paste URL in markdown",
+    "displayName": "Markdown/reStructuredText PasteURL",
+    "description": "Paste URL in Markdown/reStructuredText",
     "version": "0.3.11",
     "publisher": "kukushi",
     "repository": {
