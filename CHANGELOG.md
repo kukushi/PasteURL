@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.1] - 2018-12-25
+
+- Trim final title (thanks @houfeng0923)
+
 ## [0.4.1] - 2018-09-03
 
 - Update dependency
