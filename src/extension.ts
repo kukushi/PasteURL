@@ -62,7 +62,7 @@ export class Paster {
             filename.endsWith(".restx")) {
             return 'reStructuredText';
         }
-        
+
         return vscode.window.activeTextEditor.document.languageId;
     }
 
@@ -163,7 +163,7 @@ export class Paster {
         if (title == undefined) {
             return url
         }
-        return title
+        return title.trim()
     }
 
     showMessage(content) {
@@ -195,7 +195,7 @@ function configureHttpRequest() {
             baseRequest = request.defaults({'proxy': proxy});
         }
     }
-    
+
     if (baseRequest == undefined) {
         baseRequest = hyperquest
     }
