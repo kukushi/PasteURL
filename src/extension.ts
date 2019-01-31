@@ -60,14 +60,14 @@ export class Paster {
         if (filename.endsWith(".rst") ||
             filename.endsWith(".rest") ||
             filename.endsWith(".restx")) {
-            return 'reStructuredText';
+            return 'restructuredtext';
         }
 
-        return vscode.window.activeTextEditor.document.languageId;
+        return vscode.window.activeTextEditor.document.languageId.toLowerCase();
     }
 
     getLinkFormatter() {
-        if (this.getLanguage() == 'reStructuredText') {
+        if (this.getLanguage() == 'restructuredtext') {
             return new RestructuredTextLinkFormatter();
         } else {
             return new MarkdownLinkFormatter();
