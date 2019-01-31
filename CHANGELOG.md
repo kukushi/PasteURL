@@ -1,6 +1,10 @@
 # Change Log
 
-## [0.4.1] - 2018-12-25
+## [0.4.3] - 2019-01-31
+
+- Improve support for reStructuredText file (implemented by @vvavrychuk)
+
+## [0.4.2] - 2018-12-25
 
 - Trim final title (thanks @houfeng0923)
 

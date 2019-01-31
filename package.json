@@ -2,7 +2,7 @@
     "name": "pasteurl",
     "displayName": "Paste URL",
     "description": "Paste URL in Markdown/reStructuredText format",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "publisher": "kukushi",
     "repository": {
         "type": "git",
