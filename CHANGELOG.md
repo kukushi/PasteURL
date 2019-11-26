@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.4] - 2019-11-26
+
+- Update dependency
+
 ## [0.4.3] - 2019-01-31
 
 - Improve support for reStructuredText file (implemented by @vvavrychuk)
