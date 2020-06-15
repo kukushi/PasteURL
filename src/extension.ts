@@ -38,6 +38,12 @@ class RestructuredTextLinkFormatter implements ILinkFormatter {
     }
 }
 
+class AsciidocLinkFormatter implements ILinkFormatter {
+    formatLink(text: string, url: string): string {
+        return url + '[' + text + ']';
+    }
+}
+
 export class Paster {
     private _statusBarItem: vscode.StatusBarItem;
 
@@ -62,13 +68,21 @@ export class Paster {
             filename.endsWith(".restx")) {
             return 'restructuredtext';
         }
+        if (filename.endsWith(".asciidoc") ||
+            filename.endsWith(".adoc") ||
+            filename.endsWith(".asc")) {
+            return 'asciidoc';
+        }
 
         return vscode.window.activeTextEditor.document.languageId.toLowerCase();
     }
 
     getLinkFormatter() {
-        if (this.getLanguage() == 'restructuredtext') {
+        var language = this.getLanguage();
+        if (language == 'restructuredtext') {
             return new RestructuredTextLinkFormatter();
+        } else if (language == 'asciidoc') {
+            return new AsciidocLinkFormatter();
         } else {
             return new MarkdownLinkFormatter();
         }
