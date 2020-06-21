@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.4.5] - 2020-01-28
+
+- Fix issue [#2](https://github.com/kukushi/PasteURL/issues/2)
+
 ## [0.4.4] - 2019-11-26
 
 - Update dependency

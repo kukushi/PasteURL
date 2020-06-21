@@ -112,12 +112,11 @@ export class Paster {
     composeTitleAndSelection(url) {
         var _this = this
         var headers = {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Safari/604.1.38"
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15"
         }
         if (!url.startsWith("http")) {
             url = "http://" + url
         }
-
         var date = new Date()
         var seconds = date.getSeconds()
         var padding = seconds < 10 ? '0' : ''
