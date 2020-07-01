@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.workspace.onDidChangeConfiguration(e => configureHttpRequest());
 
     let paster = new Paster();
-    let disposable = vscode.commands.registerCommand('extension.pasteURL', () => {
+    let disposable = vscode.commands.registerCommand('pasteURL.PasteURL', () => {
         paster.paste()
     });
 

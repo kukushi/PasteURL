@@ -2,7 +2,7 @@
     "name": "pasteurl",
     "displayName": "Paste URL",
     "description": "Paste URL in Markdown/reStructuredText format",
-    "version": "0.5.0",
+    "version": "0.5.3",
     "publisher": "kukushi",
     "repository": {
         "type": "git",
@@ -22,20 +22,20 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.pasteURL"
+        "onCommand:pasteURL.PasteURL"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.pasteURL",
+                "command": "pasteURL.PasteURL",
                 "title": "Paste URL"
             }
         ],
         "keybindings": [
             {
                 "key": "ctrl+alt+p",
-                "command": "extension.pasteURL"
+                "command": "pasteURL.PasteURL"
             }
         ]
     },

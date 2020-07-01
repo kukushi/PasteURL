@@ -31,7 +31,7 @@ You can change the default shortcut to whatever you like by editing the `Code > 
 
 ```json
 [
-    {"key": "ctrl+alt+p", "command": "extension.pasteURL"}
+    {"key": "ctrl+alt+p", "command": "pasteURL.PasteURL"}
 ]
 ```
 

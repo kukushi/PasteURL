@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.5.2] - 2020-07-01
+
+- Fixed 0.5.0
+
 ## [0.5.0] - 2020-06-23
 
 - Add support for Asciidoc, thanks @akosma 
