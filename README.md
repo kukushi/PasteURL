@@ -2,6 +2,7 @@
 
 `PasteURL` is a simple extension that generating Markdown or reStructuredText style link when pasting URL.
 
+> Check out [markdown-linker-expander](https://github.com/Skn0tt/markdown-link-expander) too, it solves the same problem in a different way! :D
 ## Features
 
 A Markdown or reStructuredText inline-style link will be generated when pasting a URL into the file with corresponding active language.
