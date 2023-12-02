@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.5.5] - 2020-07-01
+
+- Update dependency
+
 ## [0.5.4] - 2020-07-01
 
 - Fixed 0.5.0
