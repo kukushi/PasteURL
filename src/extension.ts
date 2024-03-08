@@ -6,6 +6,7 @@ import * as copyPaste from 'copy-paste';
 import * as getTitle from 'get-title';
 import * as request from 'request';
 import * as hyperquest from 'hyperquest';
+import * as he from 'he';
 
 var baseRequest;
 
@@ -176,7 +177,7 @@ export class Paster {
         if (title == undefined) {
             return url
         }
-        return title.trim()
+        return he.decode(title).trim()
     }
 
     showMessage(content) {
