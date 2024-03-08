@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.5.6] - 2024-03-09
+
+- Add decoding for title
+
 ## [0.5.5] - 2020-07-01
 
 - Update dependency
